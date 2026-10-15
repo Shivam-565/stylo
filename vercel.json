@@ -1,5 +1,7 @@
 {
   "cleanUrls": true,
+  "outputDirectory": ".",
+  "buildCommand": "echo 'Static build ready'",
   "rewrites": [
     { "source": "/blank", "destination": "/how-it-works.html" },
     { "source": "/about-stylo", "destination": "/about.html" }
