@@ -1,0 +1,20 @@
+{
+  "name": "stylo-ai-stylist",
+  "version": "1.0.0",
+  "description": "STYLO - AI Personal Stylist complete web application with Computer Vision & Styling Engine",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": [
+    "stylo",
+    "ai-stylist",
+    "fashion",
+    "computer-vision",
+    "wardrobe-capsule",
+    "personal-stylist"
+  ],
+  "author": "STYLO Engineering Team",
+  "license": "MIT"
+}
