@@ -1,0 +1,7 @@
+{
+  "cleanUrls": true,
+  "rewrites": [
+    { "source": "/blank", "destination": "/how-it-works.html" },
+    { "source": "/about-stylo", "destination": "/about.html" }
+  ]
+}
