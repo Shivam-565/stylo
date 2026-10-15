@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "STYLO - AI Personal Stylist complete web application with Computer Vision & Styling Engine",
   "scripts": {
-    "start": "node server.js",
-    "dev": "node server.js"
+    "start": "node dev-server.js",
+    "dev": "node dev-server.js"
   },
   "keywords": [
     "stylo",
