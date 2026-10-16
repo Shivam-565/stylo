@@ -17,6 +17,31 @@ const MIME_TYPES = {
   '.woff2': 'font/woff2'
 };
 
+// Explicit static asset paths for @vercel/nft AST tracing
+// Each literal string instructs Vercel's bundler to include the asset in the Serverless Lambda package.
+const STATIC_REGISTRY = {
+  '/index.html': path.join(__dirname, 'index.html'),
+  '/about.html': path.join(__dirname, 'about.html'),
+  '/how-it-works.html': path.join(__dirname, 'how-it-works.html'),
+  '/blank.html': path.join(__dirname, 'blank.html'),
+  '/about-stylo.html': path.join(__dirname, 'about-stylo.html'),
+  '/css/style.css': path.join(__dirname, 'css/style.css'),
+  '/js/main.js': path.join(__dirname, 'js/main.js'),
+  '/assets/logo.png': path.join(__dirname, 'assets/logo.png'),
+  '/assets/hero-couple.png': path.join(__dirname, 'assets/hero-couple.png'),
+  '/assets/about-banner.jpg': path.join(__dirname, 'assets/about-banner.jpg'),
+  '/assets/about-credibility.jpg': path.join(__dirname, 'assets/about-credibility.jpg'),
+  '/assets/fabric-texture.jpg': path.join(__dirname, 'assets/fabric-texture.jpg'),
+  '/assets/get-look-pleats.jpg': path.join(__dirname, 'assets/get-look-pleats.jpg'),
+  '/assets/icon-circle.jpg': path.join(__dirname, 'assets/icon-circle.jpg'),
+  '/assets/icon-hanger.jpg': path.join(__dirname, 'assets/icon-hanger.jpg'),
+  '/assets/icon-sparkle.jpg': path.join(__dirname, 'assets/icon-sparkle.jpg'),
+  '/assets/step1-upload.png': path.join(__dirname, 'assets/step1-upload.png'),
+  '/assets/step2-analyze.png': path.join(__dirname, 'assets/step2-analyze.png'),
+  '/assets/step3-outfits.png': path.join(__dirname, 'assets/step3-outfits.png'),
+  '/assets/versatility-trench.jpg': path.join(__dirname, 'assets/versatility-trench.jpg')
+};
+
 // Deterministic fashion styling knowledge matrix (100% free, zero-latency fallback)
 const FASHION_MATRIX = {
   'Work': {
@@ -64,7 +89,7 @@ const FASHION_MATRIX = {
     advice: 'Fluid accordion pleats and luminous tones catch evening lighting with breathtaking presence.',
     looks: [
       { num: '01', name: 'Black-Tie Gala', formula: 'Floor-length accordion gown + sculptural gold cuff + satin evening minaudière + minimal stiletto.' },
-      { num: '02', name: 'Opera / Symphony Opening', formula: 'Layered with a tailored tuxedo cape + architectural pearl ear cuffs + velvet pointed pumps.' },
+      { num: '02', name: 'Opera / Symphony Opening', formula: 'Layered with a tailored tuxedo cape + architectural pearl ear cuffs + pointed pumps.' },
       { num: '03', name: 'Cocktail Vernissage', formula: 'Pleated separate skirt + silk organza blouse + geometric clutch + architectural mules.' },
       { num: '04', name: 'Private Dinner Party', formula: 'Draped cashmere wrap + minimal silk camisole + wide pleated palazzo pants + drop earrings.' },
       { num: '05', name: 'Charity Benefit', formula: 'Cinched metallic leather waist wrap + sleek chignon hair styling + evening trench drape.' }
@@ -78,7 +103,7 @@ const FASHION_MATRIX = {
   }
 };
 
-const server = http.createServer(async (req, res) => {
+function handleRequest(req, res) {
   // Set CORS headers
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
@@ -90,7 +115,7 @@ const server = http.createServer(async (req, res) => {
     return;
   }
 
-  const parsedUrl = new URL(req.url, `http://${req.headers.host}`);
+  const parsedUrl = new URL(req.url, `http://${req.headers.host || 'localhost'}`);
   const pathname = parsedUrl.pathname;
 
   // 1. API Endpoint: /api/generate-styling
@@ -108,13 +133,11 @@ const server = http.createServer(async (req, res) => {
 
         const template = FASHION_MATRIX[occasion] || FASHION_MATRIX['Work'];
 
-        // Dynamic adjustment based on uploaded garments
         let adjustedSynergy = template.synergy;
         if (garments.length > 0) {
           adjustedSynergy = Math.min(99, 90 + garments.length * 3);
         }
 
-        // Adjust missing piece price to fit within budget
         let missingPiece = { ...template.missingPiece };
         if (missingPiece.price > budget * 0.7) {
           missingPiece.price = Math.round(budget * 0.45);
@@ -146,40 +169,67 @@ const server = http.createServer(async (req, res) => {
     return;
   }
 
-  // 2. Static File Serving
-  let reqUrl = pathname;
-  if (reqUrl === '/') reqUrl = '/index.html';
+  // 2. Static File Serving with URL aliases
+  let reqPath = pathname;
+  if (reqPath === '/' || reqPath === '') reqPath = '/index.html';
+  if (reqPath === '/blank') reqPath = '/how-it-works.html';
+  if (reqPath === '/about-stylo') reqPath = '/about.html';
 
-  let filePath = path.join(__dirname, reqUrl);
+  // Direct lookup in statically traced registry
+  let targetFile = STATIC_REGISTRY[reqPath];
 
-  // If path has no extension, check for .html
-  if (!path.extname(filePath)) {
-    if (fs.existsSync(filePath + '.html')) {
-      filePath = filePath + '.html';
-    } else if (fs.existsSync(path.join(filePath, 'index.html'))) {
-      filePath = path.join(filePath, 'index.html');
+  // Fallback checks for clean URLs and subdirectories
+  if (!targetFile) {
+    if (STATIC_REGISTRY[reqPath + '.html']) {
+      targetFile = STATIC_REGISTRY[reqPath + '.html'];
+    } else {
+      const cleanPath = reqPath.replace(/^\//, '');
+      const candidates = [
+        path.join(process.cwd(), cleanPath),
+        path.join(__dirname, cleanPath),
+        path.join(process.cwd(), 'dist', cleanPath),
+        path.join(__dirname, 'dist', cleanPath)
+      ];
+      for (const cand of candidates) {
+        if (fs.existsSync(cand) && fs.statSync(cand).isFile()) {
+          targetFile = cand;
+          break;
+        }
+      }
     }
   }
 
-  const ext = path.extname(filePath).toLowerCase();
+  if (!targetFile || !fs.existsSync(targetFile)) {
+    res.writeHead(404, { 'Content-Type': 'text/html; charset=utf-8' });
+    res.end('<h1>404 Not Found</h1><p><a href="/">Return to Home</a></p>');
+    return;
+  }
+
+  const ext = path.extname(targetFile).toLowerCase();
   const contentType = MIME_TYPES[ext] || 'application/octet-stream';
 
-  fs.readFile(filePath, (err, content) => {
+  fs.readFile(targetFile, (err, content) => {
     if (err) {
-      if (err.code === 'ENOENT') {
-        res.writeHead(404, { 'Content-Type': 'text/html; charset=utf-8' });
-        res.end('<h1>404 Not Found</h1><p><a href="/">Return to Home</a></p>');
-      } else {
-        res.writeHead(500);
-        res.end('Server Error: ' + err.code);
-      }
+      res.writeHead(500, { 'Content-Type': 'text/plain' });
+      res.end('Server Error: ' + err.code);
     } else {
+      // Set appropriate cache headers for static assets
+      if (ext === '.css' || ext === '.js' || ext === '.png' || ext === '.jpg' || ext === '.jpeg') {
+        res.setHeader('Cache-Control', 'public, max-age=86400, stale-while-revalidate=604800');
+      }
       res.writeHead(200, { 'Content-Type': contentType });
       res.end(content);
     }
   });
-});
+}
 
-server.listen(PORT, () => {
-  console.log(`STYLO dev server running on http://localhost:${PORT}`);
-});
+// Export request listener function for Vercel Serverless Function runtime
+module.exports = handleRequest;
+
+// Start local HTTP server only when executed standalone
+if (require.main === module) {
+  const server = http.createServer(handleRequest);
+  server.listen(PORT, () => {
+    console.log(`STYLO server running on http://localhost:${PORT}`);
+  });
+}
