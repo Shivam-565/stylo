@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "STYLO - AI Personal Stylist complete web application with Computer Vision & Styling Engine",
   "scripts": {
-    "build": "echo 'Static build ready'",
+    "build": "node build.js",
     "start": "node dev-server.js",
     "dev": "node dev-server.js"
   },

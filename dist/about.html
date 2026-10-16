@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About STYLO | AI Personal Stylist</title>
+  <meta name="description" content="Learn about STYLO's mission to transform how people dress by maximizing their existing wardrobe through ethical, sustainable, and intelligent AI styling technology." />
+  <link rel="icon" type="image/png" href="assets/logo.png" />
+  
+  <!-- Google Fonts: Instrument Serif & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  
+  <!-- Master Stylesheet -->
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- ==========================================================================
+       SITE HEADER
+       ========================================================================== -->
+  <header class="site-header" id="siteHeader">
+    <div class="container">
+      <a href="index.html" class="header-brand" aria-label="STYLO Home">
+        <img src="assets/logo.png" alt="STYLO logo" class="brand-logo-img" />
+      </a>
+
+      <!-- Desktop Navigation -->
+      <nav class="header-nav" aria-label="Primary Navigation">
+        <ul class="nav-links">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="how-it-works.html" class="nav-link">How it works</a></li>
+          <li><a href="about.html" class="nav-link active">About STYLO</a></li>
+        </ul>
+      </nav>
+
+      <!-- Action Buttons -->
+      <div class="header-actions">
+        <!-- Auth / Profile Button -->
+        <button type="button" class="action-btn action-btn-auth open-auth-modal" data-auth-type="signup" aria-label="Account Login or Signup">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+            <circle cx="12" cy="7" r="4"></circle>
+          </svg>
+        </button>
+
+        <!-- Cart Button -->
+        <button type="button" class="action-btn cart-btn" id="cartBtn" aria-label="Shopping Cart">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <path d="M16 10a4 4 0 0 1-8 0"></path>
+          </svg>
+          <span class="cart-badge" id="cartBadge">0</span>
+        </button>
+
+        <!-- Mobile Hamburger Button -->
+        <button type="button" class="hamburger-btn" id="hamburgerBtn" aria-label="Toggle Navigation Menu">
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer Menu -->
+  <div class="mobile-nav-drawer" id="mobileNavDrawer">
+    <ul class="mobile-nav-links">
+      <li><a href="index.html" class="mobile-nav-link">Home</a></li>
+      <li><a href="how-it-works.html" class="mobile-nav-link">How it works</a></li>
+      <li><a href="about.html" class="mobile-nav-link active">About STYLO</a></li>
+    </ul>
+    <div class="mobile-nav-actions">
+      <button type="button" class="mobile-auth-btn open-auth-modal" data-auth-type="signup">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+          <circle cx="12" cy="7" r="4"></circle>
+        </svg>
+        Sign Up / Log In
+      </button>
+    </div>
+  </div>
+
+  <div class="page-wrapper">
+    <!-- ==========================================================================
+         HERO SECTION
+         ========================================================================== -->
+    <section class="about-hero">
+      <div class="container">
+        <h1 class="page-main-title">About STYLO</h1>
+        <p class="about-intro-text">
+          STYLO is an AI-powered personal styling platform designed to transform the way people dress. We believe that looking stylish doesn’t mean buying more clothes — it means making better use of what you already own. Our platform helps you discover new outfit combinations from your existing wardrobe with personalized styling recommendations based on occasion, weather, comfort, body shape, and your unique preferences.
+        </p>
+      </div>
+    </section>
+
+    <!-- Panoramic Banner -->
+    <div class="about-banner-section">
+      <div class="container" style="max-width: 1380px;">
+        <img src="assets/about-banner.jpg" alt="AI Wardrobe Digital Rack Interface" class="about-banner-img" />
+      </div>
+    </div>
+
+    <!-- Why We Created STYLO -->
+    <section class="why-created-section">
+      <div class="container">
+        <h2 class="why-created-title">Why We Created STYLO</h2>
+        <p class="why-created-desc">
+          Have you ever stood in front of a wardrobe full of clothes and still felt like you had nothing to wear? You’re not alone. Many people repeat the same outfits or buy new clothes when they already have plenty of options. STYLO was created to solve this everyday problem by making personal styling simpler, smarter, and more accessible.
+        </p>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         6-CARD FEATURE GRID
+         ========================================================================== -->
+    <section>
+      <div class="container">
+        <div class="about-cards-grid">
+          <!-- Card 1: What We Do -->
+          <div class="about-card">
+            <img src="assets/icon-sparkle.jpg" alt="Sparkle Icon" class="about-card-icon" />
+            <h3 class="about-card-title">What We Do</h3>
+            <ul class="about-bullet-list">
+              <li><strong>AI-Powered Styling:</strong> Discover outfit ideas tailored to your preferences and needs.</li>
+              <li><strong>One Item, 5 Looks:</strong> Find five different ways to style a single clothing item.</li>
+              <li><strong>Get the Look:</strong> Recreate outfit inspirations using clothes you already own.</li>
+              <li><strong>Travel Stylist:</strong> Plan outfits and packing lists for your next trip.</li>
+              <li><strong>Wardrobe Score:</strong> Understand how effectively you use your wardrobe.</li>
+              <li><strong>Complete the Look:</strong> Discover recommended fashion items from partner brands based on your style and budget.</li>
+            </ul>
+          </div>
+
+          <!-- Card 2: Total Analysis -->
+          <div class="about-card">
+            <img src="assets/icon-hanger.jpg" alt="Hanger Icon" class="about-card-icon" />
+            <h3 class="about-card-title">Total Analysis</h3>
+            <p class="about-card-text">
+              We map your entire closet to find hidden combinations you never thought possible.
+            </p>
+          </div>
+
+          <!-- Card 3: Our Mission -->
+          <div class="about-card">
+            <img src="assets/icon-circle.jpg" alt="Circle Icon" class="about-card-icon" />
+            <h3 class="about-card-title">Our Mission</h3>
+            <p class="about-card-text">
+              Our mission is to make everyday styling effortless, affordable, personalized, and sustainable. We want to help people feel confident in what they wear while encouraging smarter fashion choices.
+            </p>
+          </div>
+
+          <!-- Card 4: Speed & Ease -->
+          <div class="about-card">
+            <h3 class="about-card-title" style="margin-top: 0.5rem;">Speed & Ease</h3>
+            <p class="about-card-text">
+              Get daily outfit suggestions instantly based on weather and your schedule.
+            </p>
+          </div>
+
+          <!-- Card 5: What Makes STYLO Different -->
+          <div class="about-card">
+            <h3 class="about-card-title" style="margin-top: 0.5rem;">What Makes STYLO Different</h3>
+            <p class="about-card-text">
+              Unlike traditional fashion platforms that focus on selling new clothes, STYLO starts with what you already have. We combine personalized styling with technology to unlock more possibilities from your existing wardrobe.
+            </p>
+          </div>
+
+          <!-- Card 6: Proven Tech -->
+          <div class="about-card">
+            <h3 class="about-card-title" style="margin-top: 0.5rem;">Proven Tech</h3>
+            <p class="about-card-text">
+              Thousands of successful outfits generated, refining your style with every use.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         CREDIBILITY & TRUST SECTION
+         ========================================================================== -->
+    <section class="credibility-section">
+      <div class="container">
+        <div class="credibility-header">
+          <span class="credibility-badge">STYLE YOU CAN TRUST</span>
+          <h2 class="credibility-title">Our Credibility</h2>
+          <p class="credibility-subtitle">
+            We combine advanced AI technology with human expertise to ensure your wardrobe reflects the best version of you.
+          </p>
+        </div>
+
+        <div class="credibility-grid">
+          <div class="credibility-image-wrap">
+            <img src="assets/about-credibility.jpg" alt="STYLO Stylist and fashion technology" class="credibility-image" />
+          </div>
+
+          <div class="credibility-pillars">
+            <div class="pillar-item">
+              <h3 class="pillar-title">Fashion with Purpose</h3>
+              <p class="pillar-desc">
+                We encourage smarter shopping decisions and making better use of clothes you already own.
+              </p>
+            </div>
+
+            <div class="pillar-item">
+              <h3 class="pillar-title">Honest Recommendations</h3>
+              <p class="pillar-desc">
+                Providing transparent partner brand recommendations that genuinely fit your unique style.
+              </p>
+            </div>
+
+            <div class="pillar-item">
+              <h3 class="pillar-title">Our Promise</h3>
+              <p class="pillar-desc">
+                Your style is personal. STYLO helps you explore it with greater confidence and ease.
+              </p>
+            </div>
+
+            <div class="pillar-item">
+              <h3 class="pillar-title">Privacy Comes First</h3>
+              <p class="pillar-desc">
+                We protect your personal fashion data with industry-leading security and encryption.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ==========================================================================
+       SITE FOOTER
+       ========================================================================== -->
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <a href="index.html" class="footer-brand" aria-label="STYLO Home">
+        <img src="assets/logo.png" alt="STYLO" style="height: 28px; width: auto;" />
+      </a>
+
+      <!-- Social Media Bar -->
+      <nav class="footer-social-bar" aria-label="Social Media Links">
+        <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" class="social-icon-link" aria-label="Facebook">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M9 8H6v4h3v12h5V12h3.642L18 8h-4V6.333C14 5.374 14.5 5 15.5 5H18V0h-3.808C10.592 0 9 1.583 9 4.615V8z"/></svg>
+        </a>
+        <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" class="social-icon-link" aria-label="Instagram">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        </a>
+        <a href="https://www.youtube.com" target="_blank" rel="noopener noreferrer" class="social-icon-link" aria-label="YouTube">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg>
+        </a>
+        <a href="https://www.x.com" target="_blank" rel="noopener noreferrer" class="social-icon-link" aria-label="X (Twitter)">
+          <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        </a>
+        <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer" class="social-icon-link" aria-label="LinkedIn">
+          <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><path d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38 1.11-2.5 2.48-2.5s2.48 1.12 2.48 2.5zm.02 4.5h-5v16h5v-16zm7.982 0h-4.968v16h4.969v-8.399c0-4.67 6.029-5.052 6.029 0v8.399h4.988v-10.131c0-7.88-8.922-7.593-11.018-3.714v-2.155z"/></svg>
+        </a>
+        <a href="https://www.tiktok.com" target="_blank" rel="noopener noreferrer" class="social-icon-link" aria-label="TikTok">
+          <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><path d="M12.525.02c1.31 0 2.6.43 3.65 1.22 1.05.78 1.8 1.88 2.14 3.12.72.04 1.44.17 2.14.39v4.21c-.72-.14-1.46-.22-2.2-.24-.04 2.82-.04 5.64-.04 8.46 0 1.83-.58 3.6-1.66 5.07-1.08 1.47-2.58 2.53-4.3 3.04-1.72.51-3.56.41-5.21-.29-1.65-.7-3.03-1.92-3.92-3.48-.89-1.56-1.22-3.37-.93-5.16.29-1.79 1.18-3.41 2.54-4.62 1.36-1.21 3.09-1.88 4.89-1.9v4.33c-.87.03-1.71.4-2.31 1.04-.6.64-.93 1.49-.9 2.37.03.88.42 1.7 1.08 2.3.66.6 1.54.91 2.42.87.89-.04 1.73-.44 2.34-1.11.61-.67.92-1.57.87-2.47-.02-3.95-.02-7.9-.02-11.85-.01-2.29-.01-4.58-.01-6.88z"/></svg>
+        </a>
+      </nav>
+
+      <p class="footer-copyright">© 2026 STYLO. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- ==========================================================================
+       AUTH MODAL OVERLAY (SIGN UP & LOG IN)
+       ========================================================================== -->
+  <div class="modal-overlay" id="authModalOverlay" role="dialog" aria-modal="true">
+    <!-- SIGN UP MODAL -->
+    <div class="modal-card" id="signupModal">
+      <button type="button" class="modal-close-btn" aria-label="Close dialog">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+
+      <h2 class="modal-title font-serif">Sign Up</h2>
+      <p class="modal-subtitle">
+        Already have an account? <a href="#" class="modal-switch-link switch-to-login">Log In</a>
+      </p>
+
+      <form class="modal-form" id="signupForm">
+        <div class="input-field-group">
+          <label for="signupEmail" class="input-label">Email</label>
+          <input type="email" id="signupEmail" class="modal-input" required placeholder="name@example.com" />
+        </div>
+
+        <div class="input-field-group">
+          <label for="signupPassword" class="input-label">Password</label>
+          <div class="password-input-wrap">
+            <input type="password" id="signupPassword" class="modal-input" required placeholder="Create a password" />
+            <button type="button" class="password-toggle-btn" aria-label="Toggle password visibility">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                <circle cx="12" cy="12" r="3"></circle>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <button type="submit" class="modal-submit-btn">Sign Up</button>
+      </form>
+
+      <div class="or-divider">or</div>
+
+      <button type="button" class="social-auth-btn">
+        <svg width="18" height="18" viewBox="0 0 24 24"><path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.66-5.17 3.66-9.17z"/><path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.1-6.72-4.93H1.25v3.15C3.26 21.36 7.36 24 12 24z"/><path fill="#FBBC05" d="M5.28 14.27c-.25-.72-.38-1.49-.38-2.27s.13-1.55.38-2.27V6.58H1.25C.45 8.18 0 9.99 0 12s.45 3.82 1.25 5.42l4.03-3.15z"/><path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.36 0 3.26 2.64 1.25 6.58l4.03 3.15c.95-2.83 3.6-4.98 6.72-4.98z"/></svg>
+        Continue with Google
+      </button>
+
+      <button type="button" class="social-auth-btn">
+        <svg width="18" height="18" fill="#1877F2" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+        Continue with Facebook
+      </button>
+    </div>
+
+    <!-- LOG IN MODAL -->
+    <div class="modal-card" id="loginModal" style="display: none;">
+      <button type="button" class="modal-close-btn" aria-label="Close dialog">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+
+      <h2 class="modal-title font-serif">Log In</h2>
+      <p class="modal-subtitle">
+        Don't have an account? <a href="#" class="modal-switch-link switch-to-signup">Sign up</a>
+      </p>
+
+      <form class="modal-form" id="loginForm">
+        <div class="input-field-group">
+          <label for="loginEmail" class="input-label">Email</label>
+          <input type="email" id="loginEmail" class="modal-input" required placeholder="name@example.com" />
+        </div>
+
+        <div class="input-field-group">
+          <label for="loginPassword" class="input-label">Password</label>
+          <div class="password-input-wrap">
+            <input type="password" id="loginPassword" class="modal-input" required placeholder="Enter password" />
+            <button type="button" class="password-toggle-btn" aria-label="Toggle password visibility">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                <circle cx="12" cy="12" r="3"></circle>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <a href="#" class="forgot-password-link" onclick="alert('Password reset link sent to your email.'); return false;">Forgot Password</a>
+
+        <button type="submit" class="modal-submit-btn">Log In</button>
+      </form>
+
+      <div class="or-divider">or</div>
+
+      <button type="button" class="social-auth-btn">
+        <svg width="18" height="18" viewBox="0 0 24 24"><path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.66-5.17 3.66-9.17z"/><path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.1-6.72-4.93H1.25v3.15C3.26 21.36 7.36 24 12 24z"/><path fill="#FBBC05" d="M5.28 14.27c-.25-.72-.38-1.49-.38-2.27s.13-1.55.38-2.27V6.58H1.25C.45 8.18 0 9.99 0 12s.45 3.82 1.25 5.42l4.03-3.15z"/><path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.36 0 3.26 2.64 1.25 6.58l4.03 3.15c.95-2.83 3.6-4.98 6.72-4.98z"/></svg>
+        Continue with Google
+      </button>
+
+      <button type="button" class="social-auth-btn">
+        <svg width="18" height="18" fill="#1877F2" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+        Continue with Facebook
+      </button>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       SIDE CART DRAWER
+       ========================================================================== -->
+  <div class="cart-drawer-overlay" id="cartDrawerOverlay"></div>
+  <aside class="cart-drawer" id="cartDrawer" aria-label="Shopping Cart Drawer">
+    <div class="cart-header">
+      <h2 class="cart-title" id="cartCountHeader">Cart (0 items)</h2>
+      <button type="button" class="cart-close-btn" id="cartCloseBtn" aria-label="Close cart drawer">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+
+    <div class="cart-body" id="cartBody">
+      <!-- Injected via JavaScript -->
+    </div>
+
+    <div class="cart-footer" id="cartFooter" style="display: none;">
+      <div class="cart-subtotal-row">
+        <span>Subtotal</span>
+        <span id="cartSubtotal">$0.00</span>
+      </div>
+      <button type="button" class="checkout-btn" onclick="handleCheckout()">
+        Proceed to Checkout
+      </button>
+    </div>
+  </aside>
+
+  <!-- Scripts -->
+  <script src="js/main.js"></script>
+</body>
+</html>
